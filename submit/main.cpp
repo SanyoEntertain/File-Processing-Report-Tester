@@ -334,7 +334,7 @@ class BT {
 			// 왼쪽 자식이 만약 더 size가 크다면 왼쪽을 리턴, 아니면 오른쪽을 리턴.
 			else
 			{
-				if(y->__children_[i]->size() >= y->__children_[i + 1]->size())
+				if(y->__children_[i - 1]->size() >= y->__children_[i]->size())
 				{
 					return i - 1;
 				}
@@ -345,7 +345,9 @@ class BT {
 			}
 			
 		}
-
+			
+	
+		// redistribute 후
 		void redistributeKeys(pointer x, pointer y, size_type bestSib)
 		{
 			size_type i = 0;
@@ -383,6 +385,7 @@ class BT {
 				deleteKey(bestNode, firstKey);
 				y->__keys_[i] = firstKey;
 			}
+
 		}
 
 		void mergeNode(pointer &x, pointer y, size_type bestSib)
@@ -529,6 +532,7 @@ class BT {
 
 			while(!finished)
 			{
+
 				if(__root_ == p || p->size() >= (M - 1) / 2)
 				{
 					finished = true;
@@ -538,6 +542,7 @@ class BT {
 					size_type bestSib = bestSibiling(p, q);
 
 					// size가 커서 merge하면 불리할 때 redistribute를 해야 한다.
+					///// 확인필요.
 					if(q->__children_[bestSib]->size() > (M - 1) / 2)
 					{
 						redistributeKeys(p, q, bestSib);
