@@ -593,7 +593,7 @@ class BT {
 * ❗️새로 구현하실 경우, 출력 형식에 주의하세요.❗️
 */
 int main() {
-	BT<int, 6>	tree;
+	BT<int, 4>	tree;
 	char	command;
 	int		key;
 
