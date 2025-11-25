@@ -334,7 +334,7 @@ class BT {
 			// 왼쪽 자식이 만약 더 size가 크다면 왼쪽을 리턴, 아니면 오른쪽을 리턴.
 			else
 			{
-				if(y->__children_[i - 1]->size() >= y->__children_[i]->size())
+				if(y->__children_[i - 1]->size() >= y->__children_[i+1]->size())
 				{
 					return i - 1;
 				}
@@ -532,7 +532,6 @@ class BT {
 
 			while(!finished)
 			{
-
 				if(__root_ == p || p->size() >= (M - 1) / 2)
 				{
 					finished = true;
